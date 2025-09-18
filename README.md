@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BFSTORE - Profil Pribadi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Variabel CSS untuk tema gelap dan gradasi */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #7e30e1;
+            --accent-color-2: #4a3cf7;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset dan gaya dasar */
         * {
             margin: 0;
             padding: 0;
@@ -14,165 +25,158 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        :root {
-            --primary-color: #6b46c1;
-            --secondary-color: #805ad5;
-            --accent-color: #9f7aea;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #f8f8f8;
-        }
-
         body {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            color: var(--text-color);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            padding: 20px;
         }
 
+        /* Container utama */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
+        /* Header dengan animasi */
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
         }
 
-        .profile-card {
-            background: linear-gradient(145deg, var(--card-bg), #2d2d2d);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 0 auto;
-            max-width: 500px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 1s ease-out;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(159, 122, 234, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        .profile-pic {
+        .profile-picture {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             margin: 0 auto 20px;
-            background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-color-2));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
             color: white;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
+            box-shadow: 0 10px 20px rgba(126, 48, 225, 0.3);
+            animation: float 3s ease-in-out infinite;
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-2));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
         }
 
         .tagline {
+            color: var(--text-secondary);
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #ccc;
         }
 
-        .contact-info {
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .contact-item i {
-            font-size: 24px;
-            margin-right: 15px;
-            width: 30px;
-            text-align: center;
-            color: var(--accent-color);
-        }
-
-        .contact-item a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
+        /* Grid untuk kartu sosial media */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* Kartu sosial media */
+        .social-card {
+            background: linear-gradient(145deg, #1e1e1e, #2d2d2d);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-2));
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(126, 48, 225, 0.3);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .social-username {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 1rem;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-2));
             color: white;
-            font-size: 20px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 10px;
         }
 
         .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(126, 48, 225, 0.4);
         }
 
+        /* Footer */
         footer {
             text-align: center;
+            padding: 30px 0;
             margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animations */
+        /* Animasi */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -184,81 +188,57 @@
             }
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(107, 70, 193, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(107, 70, 193, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(107, 70, 193, 0);
-            }
+        /* Efek untuk kartu saat muncul */
+        .social-card {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
         }
 
-        @keyframes shine {
-            0% {
-                left: -50%;
-            }
-            100% {
-                left: 150%;
-            }
-        }
+        .social-card:nth-child(1) { animation-delay: 0.1s; }
+        .social-card:nth-child(2) { animation-delay: 0.2s; }
+        .social-card:nth-child(3) { animation-delay: 0.3s; }
+        .social-card:nth-child(4) { animation-delay: 0.4s; }
+        .social-card:nth-child(5) { animation-delay: 0.5s; }
+        .social-card:nth-child(6) { animation-delay: 0.6s; }
+        .social-card:nth-child(7) { animation-delay: 0.7s; }
+        .social-card:nth-child(8) { animation-delay: 0.8s; }
 
-        /* Responsive Design */
+        /* Responsivitas */
         @media (max-width: 768px) {
-            .profile-card {
-                max-width: 90%;
-                padding: 20px;
-            }
-            
             h1 {
                 font-size: 2rem;
             }
             
-            .profile-pic {
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-picture {
                 width: 120px;
                 height: 120px;
                 font-size: 50px;
             }
-            
-            .contact-item {
-                padding: 12px;
-            }
-            
-            .contact-item a {
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .profile-card {
-                max-width: 95%;
-                padding: 15px;
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px 10px;
             }
             
             h1 {
                 font-size: 1.8rem;
             }
             
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-                font-size: 40px;
-            }
-            
-            .contact-item {
-                padding: 10px;
-            }
-            
-            .social-links {
-                gap: 15px;
-            }
-            
-            .social-link {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
+            .social-card {
+                padding: 20px;
             }
         }
     </style>
@@ -266,66 +246,118 @@
 <body>
     <div class="container">
         <header>
-            <div class="profile-card">
-                <div class="profile-pic">
-                    <span>B</span>
-                </div>
-                <h1>BFSTORE</h1>
-                <p class="tagline">Your Trusted Digital Partner</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item" onclick="copyToClipboard('083183130537')">
-                        <i class="fab fa-whatsapp"></i>
-                        <a href="https://wa.me/6283183130537" target="_blank">083183130537</a>
-                    </div>
-                    
-                    <div class="contact-item" onclick="copyToClipboard('t.me/bfstore20')">
-                        <i class="fab fa-telegram"></i>
-                        <a href="https://t.me/bfstore20" target="_blank">t.me/bfstore20</a>
-                    </div>
-                    
-                    <div class="contact-item" onclick="copyToClipboard('bang_frgi20')">
-                        <i class="fab fa-tiktok"></i>
-                        <a href="https://www.tiktok.com/@bang_frgi20" target="_blank">bang_frgi20</a>
-                    </div>
-                </div>
+            <div class="profile-picture">
+                <i class="fas fa-store"></i>
             </div>
+            <h1>BFSTORE</h1>
+            <p class="tagline">Your trusted partner for digital solutions</p>
         </header>
-        
-        <div class="social-links">
-            <a href="https://wa.me/6283183130537" class="social-link" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://t.me/bfstore20" class="social-link" target="_blank">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@bang_frgi20" class="social-link" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
+
+        <div class="social-grid">
+            <!-- WhatsApp -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="social-name">WhatsApp</div>
+                <div class="social-username">083183130537</div>
+                <a href="https://wa.me/6283183130537" class="social-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Telegram -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="social-name">Telegram</div>
+                <div class="social-username">@bfstore20</div>
+                <a href="https://t.me/bfstore20" class="social-link" target="_blank">
+                    <i class="fab fa-telegram"></i> Kirim Pesan
+                </a>
+            </div>
+
+            <!-- Tiktok 1 -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="social-name">TikTok</div>
+                <div class="social-username">@egikgaje</div>
+                <a href="https://www.tiktok.com/@egikgaje" class="social-link" target="_blank">
+                    <i class="fab fa-tiktok"></i> Follow Saya
+                </a>
+            </div>
+
+            <!-- Tiktok 2 -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="social-name">TikTok</div>
+                <div class="social-username">@bang_frgi20</div>
+                <a href="https://www.tiktok.com/@bang_frgi20" class="social-link" target="_blank">
+                    <i class="fab fa-tiktok"></i> Follow Saya
+                </a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="social-name">Instagram</div>
+                <div class="social-username">@frgispl_</div>
+                <a href="https://www.instagram.com/frgispl_/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i> Follow Saya
+                </a>
+            </div>
+
+            <!-- YouTube -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="social-name">YouTube</div>
+                <div class="social-username">Yt bangFrgi</div>
+                <a href="https://www.youtube.com/@bangFrgi" class="social-link" target="_blank">
+                    <i class="fab fa-youtube"></i> Subscribe
+                </a>
+            </div>
+
+            <!-- Sociabuzz -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="social-name">Sociabuzz</div>
+                <div class="social-username">fergiandi20</div>
+                <a href="https://sociabuzz.com/fergiandi20/tribe" class="social-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Kunjungi
+                </a>
+            </div>
         </div>
+
+        <footer>
+            <p>&copy; 2023 BFSTORE. All rights reserved.</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p>&copy; 2023 BFSTORE - All Rights Reserved</p>
-    </footer>
 
     <script>
-        // Animasi saat elemen muncul di viewport
+        // Script sederhana untuk menambah interaktivitas
         document.addEventListener('DOMContentLoaded', function() {
-            const contactItems = document.querySelectorAll('.contact-item');
+            const cards = document.querySelectorAll('.social-card');
             
-            contactItems.forEach((item, index) => {
-                item.style.animationDelay = `${index * 0.2}s`;
-            });
-            
-            // Efek salin ke clipboard
-            window.copyToClipboard = function(text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('Teks berhasil disalin: ' + text);
-                }).catch(err => {
-                    console.error('Gagal menyalin teks: ', err);
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
                 });
-            };
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
         });
     </script>
 </body>
